@@ -13,35 +13,59 @@
   <form id="register" name="register">
     <h3>Register Form</h3>
     <h4>Kindly fill all form</h4>
-    <fieldset>
+    <div>
       <input placeholder="First name" type="text" id="firstname" name="firstname" required autofocus>
-    </fieldset>
-    <fieldset>
+      <span></span>
+    </div>
+    <div>
       <input placeholder="Last name" type="text" id="lastname" name="lastname"  required autofocus>
-    </fieldset>
-    <fieldset>
+    </div>
+    <div>
       <input placeholder="Age" type="number" id="age" name="age" tabindex="2" required>
-    </fieldset>
+    </div>
     
-    <fieldset>
+    <div>
       <input placeholder="Polling unit" type="text" id="polling_unit" name="polling_unit" required>
-    </fieldset>
-    <fieldset>
+    </div>
+    <div>
       <input placeholder="Your Phone Number" type="tel"  id="phonenumber" name="phonenumber"  required>
-    </fieldset>
-    <fieldset>
+    </div>
+    <div>
       <input placeholder="Your Email Address" type="email" id="email" name="email" >
-    </fieldset>
-
-    <fieldset>
-      <button name="submit" type="submit" id="submit" d>Submit</button>
-    </fieldset>
+    </div>
+    <div>
+      <input placeholder="Password" type="password" id="pwd" name="pwd" >
+    </div>
+    <div>
+      <input placeholder="Comfirm Password" type="password" id="Cpwd" name="Cpwd" >
+      <span class="danger"  id="message"></span>
+    </div>
+    <div>
+      <button name="submit" type="submit" id="submit" >Submit</button>
+    </div>
 
   </form>
 
 
 <script> 
 
+
+document.getElementById("Cpwd").addEventListener("keyup",comparePwd);
+
+function comparePwd(){
+  
+  var pwd=document.getElementById("pwd");
+  var Cpwd=document.getElementById("Cpwd");
+  if(pwd.value != Cpwd.value){
+    document.getElementById('message').innerHTML="password and confirm password not match";
+
+  }
+  else{
+    document.getElementById('message').innerHTML="";
+  }
+}
+
+document.getElementById("Cpwd").addEventListener("keyup",comparePwd);
 const $submit = document.getElementById("submit");
 
 async function addRecord(){
@@ -58,7 +82,9 @@ submit.addEventListener("click",e => {
 
 });
 
+
 </script>
 </div>
+
 </body>
 </html>

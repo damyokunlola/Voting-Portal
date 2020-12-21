@@ -17,7 +17,12 @@ public function addUser($fields,$values)
 }
 
 
-
+public function checkemail($email)
+{
+    $verify = "SELECT email FROM user WHERE email= '$email'";
+    $result = $this->conn->query($verify);
+    return $result->num_rows;
+}
 
 
         public function loginUser(){
