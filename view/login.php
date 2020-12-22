@@ -29,7 +29,7 @@
     <script>
         const submit = document.getElementById("login");
 
-        async function loggin() {
+        async function logggin() {
 
             const form = document.getElementById("loginform");
             const formdata = new FormData(form);
@@ -40,12 +40,18 @@
                 body: formdata
             });
             const res = await check.json();
-            alert(res.message);
+            if(res.status) {
+                window.location = "register.php";
+                alert(res.message);
+            }else {
+
+                alert(res.message);
+            }
         }
 
         submit.addEventListener("click", e => {
             e.preventDefault();
-            loggin()
+            logggin()
         });
     </script>
 </body>

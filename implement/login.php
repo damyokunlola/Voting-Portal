@@ -18,7 +18,7 @@ if($loguser != null) {
      
         $output["status"]= true;
         $output["message"]= "correct username or password";
-        header("location: ../view/register.php",TRUE,301);
+        // header("location: ../view/register.php",TRUE,301);
        
     } else {
         $output["status"]= false;
