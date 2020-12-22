@@ -25,11 +25,15 @@ public function checkemail($email)
 }
 
 
-        public function loginUser(){
+public function loginUser($email, $password){
 
+    
+     $query="SELECT * FROM user WHERE email= '$email' LIMIT 1";
 
+     $result= $this->conn->query($query);
+      return $result->fetch_assoc();
 
-          }
+}
 
 }
 
