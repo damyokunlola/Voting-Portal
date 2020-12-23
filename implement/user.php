@@ -37,21 +37,15 @@ $user = new UserController();
     $encry_pwd= password_hash($password,PASSWORD_BCRYPT, $value);
 
 
-// if(password_verify($password,$Cpassword)){
-
-//     $output["message"]= "password and confirm password not match";
-//     exit(json_encode($output));
-// }
-
-
-
     $emailcount= $user->checkemail($email);
     
     if($emailcount>0){
     // $output["status"]= false;
     $output["message"] = "Email already exist.";
     exit(json_encode($output));
-
+ if($age < 18){
+     $output["message"]= " We are sorry to inform you that you are below age";
+ }
 
 }
 
@@ -73,8 +67,7 @@ else{
 
 }
 
-
-    // if($)                 ;                                                                                      
+                ;                                                                                      
 
 ?>
 

@@ -4,7 +4,7 @@ class Dbconnection{
  private $server = "localhost";
  private $user ="root";
  private $pwd ="";
- private $dbname= "voting";
+ private $dbname= "voting-portal";
 
 public function __construct(){
  
@@ -13,5 +13,3 @@ public function __construct(){
 }
 
 }
-
-?>
