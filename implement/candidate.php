@@ -10,13 +10,13 @@ $age = $_POST["age"];
 $position = $_POST["position"];
 $party = $_POST["party"];
 
-$addcand = $cand->addCandidate("fullname,can_id,age,position,party", "$fullname,$can_id,$age,$position,$party");
+$addcand = $cand->addCandidate("fullname,can_id,age,position,party", "'$fullname','$can_id','$age','$position','$party'");
 if ($addcand) {
     $output["status"] = true;
     $output["message"] = "record added";
-    echo "Record added";
+    //echo "Record added";
 } else {
     echo "Record not added";
     $output["status"] = false;
-    $output["message"] = "record not added";
+    // $output["message"] = "record not added";
 }
