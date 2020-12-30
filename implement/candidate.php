@@ -1,5 +1,7 @@
 <?php
 require_once("../controller/user_controller.php");
+include "../includes/utility.php";
+
 
 $cand = new UserController();
 
@@ -14,9 +16,14 @@ $addcand = $cand->addCandidate("fullname,can_id,age,position,party", "'$fullname
 if ($addcand) {
     $output["status"] = true;
     $output["message"] = "record added";
-    //echo "Record added";
+    exit(json_encode($output));
+
+    // echo json_encode(successalert("Record added"));
 } else {
-    echo "Record not added";
+
     $output["status"] = false;
-    // $output["message"] = "record not added";
+    $output["message"] = "not added";
+    exit(json_encode($output));
+
+    // echo json_encode(failalert("Record not added"));
 }

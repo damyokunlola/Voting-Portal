@@ -11,7 +11,7 @@ class UserController extends Dbconnection
 
     public function addUser($fields, $values)
     {
-        $query = "INSERT INTO user ($fields) VALUES ($values)";
+        $query = "INSERT INTO users ($fields) VALUES ($values)";
         $result = $this->conn->query($query);
 
         return $result;
@@ -20,7 +20,7 @@ class UserController extends Dbconnection
 
     public function checkemail($email)
     {
-        $verify = "SELECT email FROM user WHERE email= '$email'";
+        $verify = "SELECT email FROM users WHERE email= '$email'";
         $result = $this->conn->query($verify);
         return $result->num_rows;
     }
@@ -30,7 +30,7 @@ class UserController extends Dbconnection
     {
 
 
-        $query = "SELECT * FROM user WHERE email= '$email' LIMIT 1";
+        $query = "SELECT * FROM users WHERE email= '$email' LIMIT 1";
 
         $result = $this->conn->query($query);
         return $result->fetch_assoc();
@@ -39,7 +39,7 @@ class UserController extends Dbconnection
     public function addCandidate($fields, $values)
     {
 
-        $query = "INSERT INTO candidate ($fields) VALUES ($values)";
+        echo $query = "INSERT INTO candidate ($fields) VALUES ($values)";
         $result = $this->conn->query($query);
         return $result;
     }
