@@ -15,6 +15,8 @@ if ($loguser != null) {
 
         session_start();
         $_SESSION["userid"] = $loguser["id"];
+        $_SESSION["type"] = $loguser["type"];
+        $_SESSION["name"] = $loguser["firstname"] . " " . $loguser["lastname"];
 
         $output["status"] = true;
         $output["message"] = "correct username or password";
@@ -24,8 +26,5 @@ if ($loguser != null) {
         $output["status"] = false;
         $output["message"] = "incorrect username or password";
     }
-} else {
-    $output["status"] = false;
-    $output["message"] = "incorrect username or password";
 }
 echo json_encode($output);

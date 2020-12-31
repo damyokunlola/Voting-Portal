@@ -21,7 +21,7 @@
                 <span></span>
             </div>
             <div>
-                <input placeholder="Candidate Id" type="text" id="can_id" name="can_id" value="<?php echo rand(1, 1000000)  ?>" readonly>
+                <input placeholder="Candidate Id" type="text" id="candidateid" name="candidateid" value="<?php echo rand(1, 1000000)  ?>" readonly>
             </div>
             <div>
                 <input placeholder="Age" type="number" id="age" name="age" tabindex="2" required>

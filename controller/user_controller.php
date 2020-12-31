@@ -36,10 +36,10 @@ class UserController extends Dbconnection
         return $result->fetch_assoc();
     }
 
-    public function addCandidate($fields, $values)
+    public function addnewcandidate($fields, $values)
     {
 
-        echo $query = "INSERT INTO candidate ($fields) VALUES ($values)";
+        $query = "INSERT INTO candidate ($fields) VALUES ($values)";
         $result = $this->conn->query($query);
         return $result;
     }

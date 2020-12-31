@@ -5,7 +5,7 @@ class Dbconnection
     private $server = "localhost";
     private $user = "root";
     private $pwd = "";
-    private $dbname = "voting";
+    private $dbname = "vote_app";
 
     public function __construct()
     {

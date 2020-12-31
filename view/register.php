@@ -24,15 +24,27 @@
       <div>
         <input placeholder="Age" type="number" id="age" name="age" tabindex="2" required>
       </div>
-
-      <div>
-        <input placeholder="Polling unit" type="text" id="polling_unit" name="polling_unit" required>
-      </div>
       <div>
         <input placeholder="Your Phone Number" type="tel" id="phonenumber" name="phonenumber" required>
       </div>
       <div>
         <input placeholder="Your Email Address" type="email" id="email" name="email">
+      </div>
+
+      <div>
+        <select id="type" name="type" required>
+          <option value="voter">voter</option>
+          <option value="candidate">candidate</option>
+        </select>
+      </div>
+      <div id="posdiv" class="hide">
+        <select id="position" name="position" required>
+          <option value="None" selected>None</option>
+          <option value="Governorship">Governorship</option>
+          <option value="Presidency">Presidency</option>
+          <option value="Chairman">Chairman</option>
+          <option value="Senator">Senator</option>
+        </select>
       </div>
       <div>
         <input placeholder="Password" type="password" id="pwd" name="pwd">
@@ -40,6 +52,9 @@
       <div>
         <input placeholder="Comfirm Password" type="password" id="Cpwd" name="Cpwd">
         <span class="danger" id="message"></span>
+      </div>
+      <div>
+        <p>Already have an account ? click <a href="login.php">here</a> to login</p>
       </div>
       <div>
         <button name="submit" type="submit" id="submit">Submit</button>
@@ -50,6 +65,14 @@
 
   <script>
     document.getElementById("Cpwd").addEventListener("keyup", comparePwd);
+
+    document.getElementById("type").addEventListener("change", e => {
+      if (e.target.value === "candidate") {
+        document.getElementById("posdiv").classList.remove("hide");
+      } else {
+        document.getElementById("posdiv").classList.add("hide");
+      }
+    })
 
     function comparePwd() {
 
@@ -63,10 +86,39 @@
       }
     }
 
+    function validateInput() {
+      let errors = 0;
+      let errormsg = "";
+      const type = document.getElementById("type");
+      const position = document.getElementById("position");
+      const pwd = document.getElementById("pwd");
+      const Cpwd = document.getElementById("Cpwd");
+
+      if (pwd.value !== Cpwd.value) {
+        errors++;
+        errormsg += "password does not match <br/>";
+      }
+
+      if (type.value == "candidate" && position.value == "None") {
+        errors++;
+        errormsg += "candidate position can not be none <br/>";
+      }
+
+      if (errors > 0) {
+        document.getElementById("message").innerHTML = errormsg;
+        return false;
+      } else {
+        document.getElementById("message").innerHTML = "";
+
+        return true;
+      }
+    }
+
     document.getElementById("Cpwd").addEventListener("keyup", comparePwd);
-    const $submit = document.getElementById("submit");
+    const submit = document.getElementById("submit");
 
     async function addRecord() {
+      if (!validateInput()) return;
       const form = document.getElementById("register");
       const formdata = new FormData(form);
       const res = await fetch("../implement/user.php", {
@@ -75,7 +127,11 @@
         body: formdata
       });
       const result = await res.json();
-      alert(result.message);
+      if (result.status) {
+        window.location = "login.php";
+      } else {
+        alert(result.message);
+      }
     }
 
     submit.addEventListener("click", e => {
