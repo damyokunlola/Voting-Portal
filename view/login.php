@@ -5,27 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="mystyle.css">
-    <title>Login Page</title>
+    <title>Voting Page</title>
 </head>
 
 <body>
     <div class="container">
 
-        <form id="loginform">
+        <form id="coringform">
 
-            <h3 id="logo">Log In</h3>
+            <h3 id="logo">Vote for your choice</h3>
 
-            <label for="username">Username</label>
-            <input type="text" id="logemail" name="logemail" placeholder="Type in your email.." autocomplete="off" required />
+            <label for="co"/label>
+            <input type="text" placeholder="voting candidas" required />
 
             <label for="password">Password</label>
             <input type="password" id="logpassword" name="logpassword" placeholder="Enter your password.." autocomplete="off" required />
 
 
-            <button type="submit" id="login" name="login">Login</button>
-            <div>
-                <p>Dont have an account ? click <a href="register.php">here</a> to register</p>
-            </div>
+            <button type="submit" id="submit" name="login">ot</button>
+          
         </form>
     </div>
 
@@ -53,10 +51,11 @@
             }
         }
 
-        submit.addEventListener("click", e => {
-            e.preventDefault();
-            logggin()
-        });
+         const submit = document.getElementById("submit");
+
+        asyn function addcan (){
+            
+        }
     </script>
 </body>
 

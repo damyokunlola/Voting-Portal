@@ -28,7 +28,8 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
 
     <div id="main">
         <div id="sidebar" class="bg-dark">
-            <li><a href="voting.php">Voting portal</a></li>
+            <li class="sidebar_item"><a href="voting.php">Voting portal</a></li>
+
         </div>
         <div id="content" class="bg-light"></div>
     </div>

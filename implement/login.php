@@ -19,7 +19,7 @@ if ($loguser != null) {
         $_SESSION["name"] = $loguser["firstname"] . " " . $loguser["lastname"];
 
         $output["status"] = true;
-        $output["message"] = "correct username or password";
+        //$output["message"] = "correct username or password";
         // header("location: ../view/register.php",TRUE,301);
 
     } else {

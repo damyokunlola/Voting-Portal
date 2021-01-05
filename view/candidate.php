@@ -20,9 +20,7 @@
                 <input placeholder="Full name" type="text" id="fullname" name="fullname" required autofocus>
                 <span></span>
             </div>
-            <div>
-                <input placeholder="Candidate Id" type="text" id="candidateid" name="candidateid" value="<?php echo rand(1, 1000000)  ?>" readonly>
-            </div>
+
             <div>
                 <input placeholder="Age" type="number" id="age" name="age" tabindex="2" required>
             </div>

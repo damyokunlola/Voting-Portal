@@ -43,4 +43,17 @@ class UserController extends Dbconnection
         $result = $this->conn->query($query);
         return $result;
     }
+
+
+    public function vote($fields, $values){
+
+        $query= "INSERT INTO votes ($fields) VALUES ($values)";
+        $result = $this->conn->query($query);
+        return $result;
+    }
+
+    public function voteresult(){
+
+        
+    }
 }
