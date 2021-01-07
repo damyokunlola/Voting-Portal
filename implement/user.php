@@ -59,8 +59,7 @@ $adduser = $user->addUser(
     "'$first_name','$last_name','$age','$email','$phonenumber','$encry_pwd','$type','$position'"
 );
 if (!$adduser) {
-    $output["status"] = false;
-    $output["message"] = "unable to add record";
+    echo json_encode(failalert("Record not  added"));
 } else {
     // $output["status"] = true;
     // $output["message"] = "Record added";

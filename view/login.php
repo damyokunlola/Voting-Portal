@@ -11,24 +11,27 @@
 <body>
     <div class="container">
 
-        <form id="coringform">
+        <form id="loginform">
 
-            <h3 id="logo">Vote for your choice</h3>
+            <h3 id="logo">Login </h3>
 
-            <label for="co"/label>
-            <input type="text" placeholder="voting candidas" required />
+            <label for="co">Email</label>
+            <input type="text" name="logemail" placeholder="Enter your email address" required />
 
             <label for="password">Password</label>
             <input type="password" id="logpassword" name="logpassword" placeholder="Enter your password.." autocomplete="off" required />
 
+            <div>
+                <p>Dont have an account yet ? click <a href="register.php">here</a> to register</p>
+            </div>
 
-            <button type="submit" id="submit" name="login">ot</button>
-          
+            <button type="submit" id="submitbtn" name="login">Login</button>
+
         </form>
     </div>
 
     <script>
-        const submit = document.getElementById("login");
+        const submit = document.getElementById("submitbtn");
 
         async function logggin() {
 
@@ -43,7 +46,6 @@
             const res = await check.json();
             if (res.status) {
                 window.location = "dashboard.php";
-                alert(res.message);
             } else {
 
                 alert(res.message);
@@ -51,11 +53,10 @@
             }
         }
 
-         const submit = document.getElementById("submit");
-
-        asyn function addcan (){
-            
-        }
+        submit.addEventListener("click", e => {
+            e.preventDefault();
+            logggin()
+        });
     </script>
 </body>
 

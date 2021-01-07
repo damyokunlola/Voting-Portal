@@ -1,4 +1,5 @@
 <?php
+require_once("../controller/user_controller.php");
 session_start();
 if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
     header("location:login.php");
@@ -31,11 +32,125 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
             <li class="sidebar_item"><a href="voting.php">Voting portal</a></li>
 
         </div>
-        <div id="content" class="bg-light"></div>
+        <div id="content" class="bg-light">
+
+            <div class="container">
+                <form id="votingform">
+
+                    <div class="container stats">
+
+
+                        <h3 class="text-center"> Presidential Election </h3>
+                        </br>
+                        <div class="row ">
+
+
+                            <?php $user = new UserController();
+                            $getcandidate = $user->fetchcandidate("candidate", "Presidency");
+
+
+                            foreach ($getcandidate as $can) {
+
+                            ?>
+
+
+
+                                <div class=" col-lg-4 col-md-4 col-sm-12 mb-2">
+                                    <div class="card minicard border-bottom-primary">
+                                        <div class="card-body">
+                                            <h6 style="font-size: 14px;"><i class="fa fa-arrow-up bg-primary p-2 rounded-circle text-white" aria-hidden="true"></i> &nbsp; <span style="color: #949090;">Presidential Aspirant</span></h6>
+                                            <h3 class="text-center" id="total-amount-invested"><?= $can["firstname"]  ?></h3>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div>
+
+                                        <input type="radio" id="p_vote" name="p_vote" value="<?php $can["can_id"]; ?>">
+                                    </div>
+                                </div>
+
+                            <?php } ?>
+
+
+
+                        </div>
+
+                        </br></br> </br></br>
+
+
+
+                        <h3 class="text-center"> Governorship Election </h3>
+                        <div class="row -m-5">
+
+
+                            <?php $user = new UserController();
+                            $getcandidate = $user->fetchcandidate("candidate", "Governorship");
+
+                            foreach ($getcandidate as $candidate) {
+
+                            ?>
+
+                                <div class="col-lg-4 col-md-4 col-sm-12 mb-2">
+                                    <div class="card minicard border-bottom-primary">
+                                        <div class="card-body">
+                                            <h6 style="font-size: 14px;"><i class="fa fa-arrow-up bg-primary p-2 rounded-circle text-white" aria-hidden="true"></i> &nbsp; <span style="color: #949090;">Governorship Aspirant</span></h6>
+                                            <h3 class="text-center" id="total-amount-invested"><?= $candidate["firstname"]  ?></h3>
+                                        </div>
+                                    </div>
+
+
+                                    <div>
+
+                                        <input type="radio" id="g_vote" name="g_vote" value="<?php $candidate["can_id"] ?>">
+                                    </div>
+
+                                </div>
+
+                            <?php } ?>
+
+                            </br>
+                            </br></br>
+
+
+                        </div>
+                        <button type="submit" id="submit_vote" name="submit_vote">Submit Vote</button>
+                </form>
+
+            </div>
+
+        </div>
+
     </div>
 
     <script src="js/bootstrap.min.js"></script>
     <script src="js/dashboard.js"></script>
+
+
+
+    <script>
+        const submit = document.getElementById("submit_vote");
+
+        async function savevote() {
+            const form = document.getElementById("votingform");
+            const formdata = new FormData(form);
+            const res = await fetch("../implement/voting.php", {
+                method: "POST",
+                headers: new Headers(),
+                body: formdata
+            });
+            const result = await res.json();
+
+            alert(result.message);
+        }
+
+        submit.addEventListener("click",
+            e => {
+                e.preventDefault();
+                savevote();
+            });
+    </script>
 </body>
 
 </html>

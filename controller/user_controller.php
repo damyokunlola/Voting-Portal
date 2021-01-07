@@ -45,15 +45,25 @@ class UserController extends Dbconnection
     }
 
 
-    public function vote($fields, $values){
 
-        $query= "INSERT INTO votes ($fields) VALUES ($values)";
+
+    public function vote($fields, $values)
+    {
+
+        $query = "INSERT INTO votes ($fields) VALUES ($values)";
         $result = $this->conn->query($query);
         return $result;
     }
 
-    public function voteresult(){
+    public function fetchcandidate($type, $position)
+    {
+        $query = "SELECT firstname, id as can_id FROM users WHERE type ='$type' AND position= '$position'";
+        $result = $this->conn->query($query);
 
-        
+        $candidates = [];
+        while ($row = $result->fetch_assoc()) {
+            $candidates[] = $row;
+        }
+        return $candidates;
     }
 }
