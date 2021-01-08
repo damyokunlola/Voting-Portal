@@ -28,10 +28,7 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
     </div>
 
     <div id="main">
-        <div id="sidebar" class="bg-dark">
-            <li class="sidebar_item"><a href="voting.php">Voting portal</a></li>
-
-        </div>
+        
         <div id="content" class="bg-light">
 
             <div class="container">
@@ -50,7 +47,7 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
 
 
                             foreach ($getcandidate as $can) {
-
+                                $gettotal = $user->fetchresult($can["can_id"]);
                             ?>
 
 
@@ -59,7 +56,7 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
                                     <div class="card minicard border-bottom-primary">
                                         <div class="card-body">
                                             <h6 style="font-size: 14px;"><i class="fa fa-arrow-up bg-primary p-2 rounded-circle text-white" aria-hidden="true"></i> &nbsp; <span style="color: #949090;">Presidential Aspirant</span></h6>
-                                            <h3 class="text-center" id="total-amount-invested"><?= $can["firstname"]  ?></h3>
+                                            <h3 class="text-center" id="total-amount-invested"><?= $can["firstname"] . "  " . "(" . $gettotal . ")" ?></h3>
                                         </div>
                                     </div>
 
@@ -67,7 +64,7 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
 
                                     <div>
 
-                                        <input type="radio" id="p_vote" name="p_vote" value="<?php $can["can_id"]; ?>">
+                                        <input type="radio" id="p_vote" name="p_vote" value="<?= $can["can_id"]  ?>">
                                     </div>
                                 </div>
 
@@ -88,7 +85,9 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
                             <?php $user = new UserController();
                             $getcandidate = $user->fetchcandidate("candidate", "Governorship");
 
+
                             foreach ($getcandidate as $candidate) {
+                                $gettotal = $user->fetchresult($candidate["can_id"]);
 
                             ?>
 
@@ -96,19 +95,21 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
                                     <div class="card minicard border-bottom-primary">
                                         <div class="card-body">
                                             <h6 style="font-size: 14px;"><i class="fa fa-arrow-up bg-primary p-2 rounded-circle text-white" aria-hidden="true"></i> &nbsp; <span style="color: #949090;">Governorship Aspirant</span></h6>
-                                            <h3 class="text-center" id="total-amount-invested"><?= $candidate["firstname"]  ?></h3>
+                                            <h3 class="text-center" id="total-amount-invested"><?= $candidate["firstname"] . "  " . "(" . $gettotal . ")" ?></h3>
                                         </div>
                                     </div>
 
 
                                     <div>
 
-                                        <input type="radio" id="g_vote" name="g_vote" value="<?php $candidate["can_id"] ?>">
+                                        <input type="radio" id="g_vote" name="g_vote" value="<?= $candidate["can_id"] ?>">
                                     </div>
 
                                 </div>
 
                             <?php } ?>
+
+
 
                             </br>
                             </br></br>

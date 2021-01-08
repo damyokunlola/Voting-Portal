@@ -128,7 +128,8 @@
       });
       const result = await res.json();
       if (result.status) {
-        window.location = "login.php";
+        //window.location = "login.php";
+        alert(result.message);
       } else {
         alert(result.message);
       }

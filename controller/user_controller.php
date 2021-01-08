@@ -66,4 +66,20 @@ class UserController extends Dbconnection
         }
         return $candidates;
     }
+
+    public function checkvoter($userid)
+    {
+
+        $query = "SELECT * FROM votes WHERE user_id = '$userid' ";
+        $result = $this->conn->query($query);
+
+        return $result->num_rows;
+    }
+    public function fetchresult($can_id)
+    {
+
+        $query = "SELECT COUNT(*) AS result FROM votes WHERE can_id = '$can_id'";
+        $result = $this->conn->query($query);
+        return $result->fetch_assoc()["result"];
+    }
 }
