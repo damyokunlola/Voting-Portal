@@ -60,7 +60,7 @@ $adduser = $user->addUser(
 );
 if (!$adduser) {
     echo json_encode(failalert("Record not  added"));
-} else {
+} else {     
     // $output["status"] = true;
     // $output["message"] = "Record added";
     echo json_encode(successalert("Record added"));
