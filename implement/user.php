@@ -59,7 +59,7 @@ $adduser = $user->addUser(
     "'$first_name','$last_name','$age','$email','$phonenumber','$encry_pwd','$type','$position'"
 );
 if (!$adduser) {
-    echo json_encode(failalert("Record not  added"));
+    echo json_encode(failalert("Record not  added")); 
 } else {     
     // $output["status"] = true;
     // $output["message"] = "Record added";
@@ -67,3 +67,4 @@ if (!$adduser) {
 }
 
     //echo json_encode($output);
+ 
