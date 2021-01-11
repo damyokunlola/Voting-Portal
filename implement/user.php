@@ -1,4 +1,4 @@
-<?php
+                                                                                                                                                                                                                                   <?php
 require_once("../controller/user_controller.php");
 include "../includes/utility.php";
 
