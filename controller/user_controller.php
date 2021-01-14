@@ -25,6 +25,13 @@ class UserController extends Dbconnection
         return $result->num_rows;
     }
 
+    public function getLenght($value){
+
+    $checkLenght= strlen(trim($value)) ;
+            return $checkLenght;
+        
+    }
+
 
     public function loginUser($email, $password)
     {

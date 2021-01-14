@@ -47,7 +47,7 @@
         </select>
       </div>
       <div>
-        <input placeholder="Password" type="password" id="pwd" name="pwd">
+        <input placeholder="Password" type="password" id="pwd" name="pwd" maxlength="5">
       </div>
       <div>
         <input placeholder="Comfirm Password" type="password" id="Cpwd" name="Cpwd">

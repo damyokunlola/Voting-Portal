@@ -1,4 +1,4 @@
-                                                                                                                                                                                                                                   <?php
+<?php
 require_once("../controller/user_controller.php");
 include "../includes/utility.php";
 
@@ -33,11 +33,18 @@ if (count($errors) > 0) {
     exit(json_encode($output));
 }
 
+$pwdLenght = $user->getLenght($password);
+$min = 5;
+if ($pwdLenght < $min) {
 
+    exit(json_encode(failalert("Password is minimumof 5 carracter")));
+} else {
 
-$value = ['cost' => 8];
+    $value = ['cost' => 8];
 
-$encry_pwd = password_hash($password, PASSWORD_BCRYPT, $value);
+    $encry_pwd = password_hash($password, PASSWORD_BCRYPT, $value);
+}
+
 
 
 $emailcount = $user->checkemail($email);
@@ -59,12 +66,11 @@ $adduser = $user->addUser(
     "'$first_name','$last_name','$age','$email','$phonenumber','$encry_pwd','$type','$position'"
 );
 if (!$adduser) {
-    echo json_encode(failalert("Record not  added")); 
-} else {     
+    echo json_encode(failalert("Record not  added"));
+} else {
     // $output["status"] = true;
     // $output["message"] = "Record added";
     echo json_encode(successalert("Record added"));
 }
 
-    //echo json_encode($output);
- 
+//echo json_encode($output);
