@@ -28,7 +28,7 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
     </div>
 
     <div id="main">
-        
+
         <div id="content" class="bg-light">
 
             <div class="container">
@@ -133,6 +133,8 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
     <script>
         const submit = document.getElementById("submit_vote");
 
+
+
         async function savevote() {
             const form = document.getElementById("votingform");
             const formdata = new FormData(form);
@@ -147,9 +149,10 @@ if ($_SESSION["userid"] == null || !isset($_SESSION["userid"])) {
         }
 
         submit.addEventListener("click",
-            e => {
+            async e => {
                 e.preventDefault();
-                savevote();
+                await savevote();
+                location.reload();
             });
     </script>
 </body>

@@ -23,10 +23,13 @@ if ($checkuser > 0) {
 $addpvote = $user->vote("user_id,can_id,election_type", "'$userid','$p_vote','Presidential'");
 $addgvote = $user->vote("user_id,can_id,election_type", "'$userid','$g_vote','Governorship'");
 
-if ($addpvote && $addgvote) {
+if ($addpvote || $addgvote) {
 
     exit(json_encode(successalert("Vote successfully saved")));
+    
 } else {
 
     exit(json_encode(failalert("Invalid Vote")));
 }
+
+
